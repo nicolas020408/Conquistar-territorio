@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int linhas = 5; // Número de linhas da matriz
     [SerializeField] int colunas = 5; // Número de colunas da matriz
     [SerializeField] float espacamento = 1.1f; // Espaçamento entre os blocos
+    [SerializeField] Text text;
 
     private Bloco[,] grade; // Matriz 2D para armazenar os blocos
     private int territoriosConquistados;
@@ -87,5 +89,7 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log("Fim do jogo! " + vencedor);
+
+        text.text = "Fim do jogo! " + vencedor;
     }
 }
