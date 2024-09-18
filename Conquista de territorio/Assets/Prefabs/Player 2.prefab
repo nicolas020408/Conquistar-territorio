@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 140591153939265362}
   - component: {fileID: 7392885034148622189}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.1692307, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.03915453, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -161,5 +161,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f8fedd92e0729b46bb99e76b93e1cfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jogador1: 1
-  corDoJogador: {r: 0, g: 0.6886792, b: 0.020053988, a: 1}
+  jogador1: 0
+  corDoJogador: {r: 0.5188679, g: 0, b: 0, a: 1}
