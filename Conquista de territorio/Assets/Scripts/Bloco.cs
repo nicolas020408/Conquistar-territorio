@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Bloco : MonoBehaviour
+public class Bloco : Elemento
 {
-    private bool conquistado = false; // O bloco foi conquistado?
+    private bool conquistado = false;
     private SpriteRenderer spriteRenderer;
     private int jogadorDono;
 
@@ -12,35 +12,31 @@ public class Bloco : MonoBehaviour
         AtualizarCor(Color.white);
     }
 
+    // Sobrescrita do método Interagir da classe base Elemento
+    public override void Interagir(GameObject jogador)
+    {
+        Jogador jogadorScript = jogador.GetComponent<Jogador>();
+
+        // Chama o método AlterarConquista para o jogador conquistar o bloco
+        if (!conquistado)
+        {
+            AlterarConquista(jogadorScript.IsJogador1(), jogadorScript.corDoJogador);
+        }
+    }
+
     // Método para alterar o estado de conquista do bloco com a cor do jogador
     public void AlterarConquista(bool jogador1, Color corDoJogador)
     {
         conquistado = true;
         AtualizarCor(corDoJogador);
-
-        // Notifica o GameController que o bloco foi conquistado por um jogador
-        if (jogador1)
-        {
-            jogadorDono = 1;
-            GameManager.instance.ConquistarTerritorio();
-        }
-        else
-        {
-            jogadorDono = 2;
-            GameManager.instance.ConquistarTerritorio();
-        }
+        jogadorDono = jogador1 ? 1 : 2;
+        GameManager.instance.ConquistarTerritorio();
     }
 
     // Método para verificar se o bloco foi conquistado
-    public bool PegarConquistado()
-    {
-        return conquistado;
-    }
+    public bool PegarConquistado() => conquistado;
 
-    public int PegarJogadorDono()
-    {
-        return jogadorDono;
-    }
+    public int PegarJogadorDono() => jogadorDono;
 
     // Método que muda a cor do bloco dependendo se ele foi conquistado ou não
     private void AtualizarCor(Color novaCor)
@@ -48,3 +44,4 @@ public class Bloco : MonoBehaviour
         spriteRenderer.color = novaCor;
     }
 }
+
